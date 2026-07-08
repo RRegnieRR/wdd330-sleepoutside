@@ -203,6 +203,15 @@ button {
   width: 100%;
 }
 
+.product__prices p {
+  margin: 0.25em 0;
+}
+
+.product__regular-price {
+  color: gray;
+  text-decoration: line-through;
+}
+
 .product__discount {
   color: var(--tertiary-color);
   font-weight: bold;

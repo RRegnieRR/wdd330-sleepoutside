@@ -9,6 +9,14 @@ function getDiscount(product) {
   return Math.round(discount);
 }
 
+function discountTemplate(product) {
+  return `<div class="product__prices">
+    <p class="product__regular-price">Regular Price: $${product.SuggestedRetailPrice.toFixed(2)}</p>
+    <p class="product-card__price">Sale Price: $${product.FinalPrice}</p>
+    <p class="product__discount">You save ${getDiscount(product)}%</p>
+  </div>`;
+}
+
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -46,8 +54,7 @@ export default class ProductDetails {
         src="${this.product.Image}"
         alt="${this.product.Name}"
       />
-      <p class="product-card__price">$${this.product.FinalPrice}</p>
-      <p class="product__discount">${getDiscount(this.product)}% off</p>
+      ${discountTemplate(this.product)}
       <p class="product__color">${this.product.Colors[0].ColorName}</p>
       <p class="product__description">${this.product.DescriptionHtmlSimple}</p>
       <div class="product-detail__add">
