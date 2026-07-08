@@ -1,5 +1,14 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
+function getDiscount(product) {
+  const discount =
+    ((product.SuggestedRetailPrice - product.FinalPrice) /
+      product.SuggestedRetailPrice) *
+    100;
+
+  return Math.round(discount);
+}
+
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -38,6 +47,7 @@ export default class ProductDetails {
         alt="${this.product.Name}"
       />
       <p class="product-card__price">$${this.product.FinalPrice}</p>
+      <p class="product__discount">${getDiscount(this.product)}% off</p>
       <p class="product__color">${this.product.Colors[0].ColorName}</p>
       <p class="product__description">${this.product.DescriptionHtmlSimple}</p>
       <div class="product-detail__add">

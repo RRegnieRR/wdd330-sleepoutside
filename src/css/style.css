@@ -203,6 +203,11 @@ button {
   width: 100%;
 }
 
+.product__discount {
+  color: var(--tertiary-color);
+  font-weight: bold;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
